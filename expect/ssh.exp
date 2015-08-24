@@ -1,0 +1,18 @@
+#!/usr/bin/expect
+
+set user [lindex $argv 0]
+set passwd [lindex $argv 1]
+set ipaddr  [lindex $argv 2]
+set cmd [lindex $argv 3]
+
+spawn ssh $user@$ipaddr
+
+
+expect {
+	"yes/no" {send "yes\n"; exp_continue;}
+	"password:" {send "$passwd\n"; exp_continue;}
+	"\\\$" {set timeout 300;send "sudo su\n"; exp_continue;}
+	"$user:" {send "$passwd\n"; exp_continue;}
+	"#" {set timeout 300; send "$cmd\nexit\nexit\n";}
+}
+expect eof

@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+
+set usr root
+
+set user [lindex $argv 0]
+set ipaddr [lindex $argv 1]
+set passwd [lindex $argv 2]
+set file [lindex $argv 3]
+set path [lindex $argv 4]
+
+spawn scp "$file" $user@$ipaddr:$path
+
+expect {
+	"yes/no" {send "yes\n"; exp_continue;}
+	"password:" {set timeout 300; send "$passwd\n";}
+}
+expect eof

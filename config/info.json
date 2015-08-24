@@ -1,0 +1,20 @@
+{
+	"dest": {
+		"ip":"localhost",
+		"username":"ylu",
+		"password":"tango1234%",
+		"tomcat":{
+			"port":"8080",
+			"username":"tomcat",
+			"password":"tomcat"
+		},
+		"java_home":"/home/ylu/software/jdk1.6.0_45",
+		"scp_path":"/tmp",
+		"war_path":"/opt/tango/components/shop",
+		"war_name_rule":"%m%d_%H%M"
+	},
+	"local": {
+		"code_path":"/home/ylu/workspace/shoptab/branches/shopc2c",
+		"download_path":"/tmp"
+	}
+}
